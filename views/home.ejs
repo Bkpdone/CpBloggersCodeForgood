@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title> <%= title%> </title>
+</head>
+<body>
+
+
+    <!-- <h1>Hi Welcome To Bhavesh Sir Home  </h1> -->
+
+
+    <% if(locals.user){%>
+    <section class="Post-Form section_Form" >
+        
+       
+        <div class="top_main_post">
+        <form class="top_post" action="/posts/create/<%= locals.user.id%>"  method="POST">
+            <textarea name="content" id="content" cols="30" rows="3" placeholder="Share your thought...!!!" ></textarea>
+          
+            <button class="top_button" type="submit">Post</button>
+        </form>
+      
+    </div>
+       <!-- <div>
+        <form action="/posts/create"  method="POST">
+            <textarea name="content" cols="30" rows="3" placeholder="text here...."  id="content" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+       </div> -->
+       <div class="post_file_option">
+       <form action="/posts/createpic/<%= user.id%>" enctype="multipart/form-data" method="POST" >
+        
+        <input type="file" name="photo" placeholder="upload photo/video">
+        <button type="submit">
+            upload Picture
+        </button>
+       </form>
+ 
+      
+    </section>
+     </div>
+    <%}%>
+  
+    <div class="main_home_show">    
+    <section id="Display-all-posts">
+        <ul>
+              <% for(val of posts){%>
+
+                 <%- include('_post') -%>
+               <%}%>
+        </ul>
+    </section>
+
+    <section class="add_friend">
+        <ul>
+        
+            <%for(val of users){%>
+                 
+                 <li style="list-style: none;">
+                    <%if(locals.user){%>
+    
+                
+                        
+                        <% if(locals.user.id!=val.id){%>
+                      
+                          
+                          
+                             <h5 style="color: #fff;font-size: 20px;">
+    
+                                <%= val.name%>
+    
+                             </h5>
+
+                             <h5 style="color: #fff;font-size: 20px;">
+                                 CodeForceRating: 
+                                <%= val.cfData.rating %>
+    
+                             </h5>
+
+                             
+                             <h5 style="color: #fff;font-size: 20px;">
+                                Title: 
+                               <%= val.cfData.rank%>
+   
+                            </h5>
+         
+         
+                             <small class="add_friend_button">
+    
+                                <a href="/friends/toggle?From_User=<%= locals.user.id%>&To_User=<%= val.id%>">
+                                    <button>Add Friend</button>
+                               
+                                <a href="/friends/display/?From_User=<%=locals.user.id%>&To_User=<%=val.id%>">
+                                      <button style="background-color:#fff;color: #000;">View Profile</button>
+                                </a>
+                              
+                             </small>
+     <br><br>
+                         <%}%>
+                         
+                   
+                 <%}%>
+                 
+                 </li>
+                    
+            <%}%>
+    
+        </ul>
+       </section>
+
+    </div>
+</body>
+</html>

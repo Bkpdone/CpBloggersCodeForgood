@@ -1,0 +1,31 @@
+{
+  "name": "01_basic_file_struct",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"set NODE_ENV=undefine &&nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod_start": "set NODE_ENV=production && nodemon index.js"
+
+     
+  },
+  "author": "Bhavesh Pharate Sir Base",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "connect-mongo": "^3.2.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "jquery": "^3.6.4",
+    "mongoose": "^6.10.0",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "2.0",
+    "nodemailer": "^6.9.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.6.1"
+  }
+}

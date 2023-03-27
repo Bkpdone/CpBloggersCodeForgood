@@ -1,0 +1,13 @@
+<div style="justify-content: center;">
+    <img src="<%= PhotoData.photo%>" alt="" height="200px" width="200px" style="justify-content: center;">
+  <br>
+  <br>
+    <div>
+        <form action="/posts/create/<%= locals.user.id%>" method="POST">
+            <textarea name="content" id="content" cols="30" rows="3"></textarea>
+            <input type="hidden" name="photopath" value="<%= PhotoData.photo%>">
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+</div>

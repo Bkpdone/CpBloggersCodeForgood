@@ -1,0 +1,61 @@
+<p>
+    <li style="list-style: none;">
+
+        <%if(locals.user && locals.user.id==val.user.id){%>
+
+        <small>
+            <a href="/posts/destroy/<%= val.id %>">
+                <button>Delete_Post</button>
+            </a>
+        </small>
+        <%}%>
+
+
+  
+           <div class="pic_post">
+            <h6 style="color: #fff;">
+                <%= val.user.name%>
+            </h6>
+
+            <div class="pic_post_comment">
+            <%if(val.photo){%>
+
+                <img  src=" <%= val.photo%>" alt="No Pic Uploaded"  >
+
+            <%}%>
+            <div class="para_user_name">
+              
+              <h5>
+                <p>
+                    <%= val.content %>
+                </p>
+              </h5>
+            </div>
+            <small style="color: #fff;">
+                <%= val.likes.length %>
+                <% if(locals.user){%>
+                <a href="/likes/toggle/?id=<%= val._id %>&type=Post">
+                    <button> Like &nbsp;❤️</button>
+                </a>
+                <%}%>
+                <small class="like_post">
+                    <p> Liked By - &nbsp;</p>
+                  <% for(like of val.likes){%>
+                <%= like.user.name %>
+                <%}%>
+                </small>
+             </small>
+            </div>
+           
+            <%- include('_comment')-%>
+          </div>
+           
+       
+         
+      
+        
+         
+        
+
+    </li>
+</p>

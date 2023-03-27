@@ -1,0 +1,51 @@
+<section id="feed-comment">
+    <% if(locals.user){%>
+    <form action="/comments/create" method="POST">
+        <textarea name="content" cols="30" rows="1" placeholder="comment here...." style="background-color: #000;color:#dbdb ;border: none;border-radius: 20px;padding: 2vh 0 2vh 0;text-align: center;"></textarea>
+        <input type="hidden" name="postId" value="<%= val._id %>" style="background-color: #fff;">
+        <button type="submit" style="background-color: #fff;border-radius: 10px;">Comment</button>
+    </form>
+    <%}%>
+
+    <div id="display-comment">
+        <ul>
+
+            <%for(comment of val.comments){%>
+                   
+                <li>
+                    <p>
+                        <small style="color: #fff;">
+                            <a href="/comments/destroy/<%= comment.id %>">
+                                <button>Delete_Comment</button>
+                            </a>
+                        </small>
+                       <h5 style="color: #fff;"> <%= comment.content%></h5>
+                    </p>
+                    <br>
+                    <small style="color: #fff;">
+                        <%= comment.user.name%>
+                    </small>
+                    <small>
+                        <br>
+                        <%= comment.likes.length %>
+                        <% if(locals.user){%>
+                        <a href="/likes/toggle/?id=<%= comment._id %>&type=Comment">
+                            <button> likes_Comment</button>
+                        </a>
+                        <%}%>
+
+                        <small style="color: #fff;">
+                            likers names=>
+                          <% for(like of comment.likes){%>
+                              <%= like.user.name %>
+                           <%}%>
+                        </small>
+
+                     </small>
+
+                </li>
+            <%}%>
+        </ul>
+
+    </div>
+</section>
