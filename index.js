@@ -26,7 +26,7 @@ console.log('HI Bhavesh Sir Socket.IO is listening At port: 50007 ............')
 //js see
 //read data from post re
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded(extended:false));
 
 //static path upto assets
 app.use(express.static(env.assets_path));
