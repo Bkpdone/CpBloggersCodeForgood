@@ -19,7 +19,7 @@ const path=require('path');
 //socket.io
 const chatServer=require('http').Server(app);
 const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
+chatServer.listen(4747);
 
 console.log('HI Bhavesh Sir Socket.IO is listening At port: 50007 ............');
 
