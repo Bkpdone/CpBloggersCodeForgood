@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const port = 7000;
+const port = 7047;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const cors = require('cors');
@@ -19,7 +19,7 @@ const path=require('path');
 //socket.io
 const chatServer=require('http').Server(app);
 const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
+chatServer.listen(5047);
 
 console.log('HI Bhavesh Sir Socket.IO is listening At port: 50007 ............');
 
